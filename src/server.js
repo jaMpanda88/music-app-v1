@@ -4,11 +4,11 @@ const Hapi = require('@hapi/hapi');
 const ClientError = require('./exceptions/ClientError');
 
 const albums = require('./api/albums');
-const AlbumService = require('./services/postgres/AlbumService');
-const AlbumValidator = require ('./validator/albums');
+const albumService = require('./services/postgres/albumService');
+const albumValidator = require ('./validator/albums');
 
 const songs = require('./api/songs');
-const songsService = require('./services/postgres/SongsService');
+const songsService = require('./services/postgres/songsService');
 const songsValidator = require ('./validator/songs');
 
 const init = async () => {
