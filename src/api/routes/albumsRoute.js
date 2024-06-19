@@ -1,18 +1,26 @@
+const path = require('path');
+
 const routes = (handler) => [
     {
         path: '/albums',
         method: 'POST',
+        handler: handler.postAlbum
     },
     {
         path: '/albums/{id}',
         method: 'GET',
+        handler: handler.getAlbumById
     },
     {
         path: '/albums/{id}',
         method: 'PUT',
+        handler: handler.editAlbumById
     },
     {
         path: '/albums/{id}',
         method: 'DELETE',
+        handler: handler.deleteAlbumById
     }
 ];
+
+module.exports = routes;
