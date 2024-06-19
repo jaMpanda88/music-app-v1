@@ -4,12 +4,12 @@ const Hapi = require('@hapi/hapi');
 const ClientError = require('./exceptions/ClientError');
 
 const albums = require('./api/albums');
-const albumsService = require('./services/postgres/albumService');
-const albumValidator = require ('./validator/albums');
+const albumsService = require('./services/postgres/albumsService');
+const albumValidator = require ('./validations/albumsValidation');
 
 const songs = require('./api/songs');
 const songsService = require('./services/postgres/songsService');
-const songsValidator = require ('./validator/songs');
+const songsValidator = require ('./validations/songsValidation');
 
 const init = async () => {
   const server = Hapi.server({
@@ -22,13 +22,22 @@ const init = async () => {
       },
   });
 
-  await server.register({
-    plugin: songs,
-    options: {
-      service: songsService,
-      validator: songsValidator,
+  await server.register([
+    {
+        plugin: songs,
+        options: {
+            service: songsService,
+            validator: songsValidator
+        }
     },
-  });
+    {
+        plugin: albums,
+        options: {
+            service: albumsService,
+            validator: albumValidator
+        }
+    }
+  ]);
 
   server.ext('onPreResponse', (request, h) => {
     const { response } = request;
