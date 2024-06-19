@@ -17,11 +17,8 @@ class albumsHandler {
    
         const response = h.response({
           status: 'success',
-          data: {
-            albumId,
-          },
-        });
-        response.code(201);
+          data: { albumId }
+        }).code(201);
         return response;
     }
 
@@ -30,10 +27,8 @@ class albumsHandler {
         const album = await this._service.getAlbumById(id);
         return {
           status: 'success',
-          data: {
-            album,
-          },
-        };
+          data: { album },
+        }.code(200);
     }
 
     async putNoteByIdHandler(request) {
@@ -45,7 +40,7 @@ class albumsHandler {
         return {
           status: 'success',
           message: 'Berhasil diperbarui',
-        };
+        }.code(200);
     }
 
     async deleteAlbumByIdHandler(request) {
@@ -55,7 +50,7 @@ class albumsHandler {
         return {
           status: 'success',
           message: 'Berhasil dihapus',
-        };
+        }.code(200);
     }
 }
 
