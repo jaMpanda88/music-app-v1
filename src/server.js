@@ -4,7 +4,7 @@ const Hapi = require('@hapi/hapi');
 const ClientError = require('./exceptions/ClientError');
 
 const albums = require('./api/albums');
-const albumService = require('./services/postgres/albumService');
+const albumsService = require('./services/postgres/albumService');
 const albumValidator = require ('./validator/albums');
 
 const songs = require('./api/songs');

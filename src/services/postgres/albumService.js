@@ -2,7 +2,6 @@ const { Pool } = require('pg');
 const { nanoid } = require('nanoid');
 const InvariantError = require('../../exceptions/InvariantError');
 const NotFoundError = require('../../exceptions/NotFound');
-const { mapDBToModel } = require('../../utils/albumsIndex');
  
 class albumsService {
     constructor() {
@@ -10,6 +9,7 @@ class albumsService {
     }
 
     async postAlbum({ name, year }) {
+        const id = `album-${nanoid(16)}`;
 
         const query = {
             text: 'INSERT INTO notes VALUES($1, $2, $3) RETURNING id',
