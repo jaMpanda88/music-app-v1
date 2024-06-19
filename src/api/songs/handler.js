@@ -24,10 +24,9 @@ class songsHandler {
     }
   
     async getSongsHandler(request) {
-      const { title = '', performer = ''} = request.query;
-      await this._validator.validateQueryPayloadSchema({ title, performer })
+      const { title, performer } = request.query;
+      const songs = await this._service.getSongs({ title, performer });
       
-      const songs = await this._service.getSongs();
       return {
         status: 'success',
         data: { songs }

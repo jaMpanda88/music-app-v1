@@ -1,8 +1,8 @@
 const Joi = require('joi');
 
-const albumSchema = Joi.object({
+const albumsSchema = Joi.object({
   name: Joi.string().required(),
   year: Joi.number().required(),
 });
 
-module.exports = { albumSchema };
+module.exports = { albumsSchema };
