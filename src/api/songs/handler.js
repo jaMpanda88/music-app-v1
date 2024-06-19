@@ -64,4 +64,4 @@ class songsHandler {
     }
   }
   
-  module.exports = SongsHandler;
+  module.exports = songsHandler;
