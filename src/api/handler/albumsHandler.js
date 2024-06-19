@@ -4,7 +4,7 @@ class albumsHandler {
 
         const response = h.response ({
             status: 'success',
-            data: { albumID }
+            data: { albumId }
         }).code(201);
         return response;
     }
